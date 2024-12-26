@@ -1,23 +1,46 @@
 package com.movie.reservation.service;
 
-import com.movie.reservation.DTO.AvailabilityResponse;
-import com.movie.reservation.DTO.BookSeatsDTO;
-import com.movie.reservation.DTO.BookedSeatsResponse;
-import com.movie.reservation.DTO.MoviesResponse;
+import com.movie.reservation.DTO.*;
+import com.movie.reservation.model.Movie;
+import com.movie.reservation.model.Show;
+import com.movie.reservation.repository.MoviesRepository;
+import com.movie.reservation.repository.ShowRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 public class ReservationServiceImpl implements ReservationService{
+    @Autowired
+    private ShowRepository showRepository;
+
+    @Autowired
+    private MoviesRepository moviesRepository;
+
     @Override
-    public BookedSeatsResponse reserveSeats(BookSeatsDTO bookSeatsDTO) {
-        return null;
+    public SeatsOperationResponse reserveSeats(SeatsOperationDTO seatsOperationDTO) {
+
     }
 
     @Override
-    public AvailabilityResponse getAvailability(String movieName) {
-        return null;
+    public AvailabilityResponse getAvailability(GetAvailabilityRequest getAvailabilityRequest) {
+
+
     }
 
     @Override
     public MoviesResponse getAllMovies() {
+      List<Movie> DBresponse =  moviesRepository.findAll();
+      return MoviesResponse.builder().movieList(DBresponse).build();
+    }
+
+    @Override
+    public SeatsOperationResponse cancelSeats(SeatsOperationDTO bookSeatsDTO) {
         return null;
+    }
+
+    @Override
+    public List<Show> getShowsByMovie(String movieName) {
+        List<Show> response = showRepository.findByMovieNameContains(movieName);
+        return response;
     }
 }

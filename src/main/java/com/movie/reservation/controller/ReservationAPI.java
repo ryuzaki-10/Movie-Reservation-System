@@ -1,21 +1,27 @@
 package com.movie.reservation.controller;
 
-import com.movie.reservation.DTO.AvailabilityResponse;
-import com.movie.reservation.DTO.BookSeatsDTO;
-import com.movie.reservation.DTO.BookedSeatsResponse;
-import com.movie.reservation.DTO.MoviesResponse;
+import com.movie.reservation.DTO.*;
+import com.movie.reservation.model.Show;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 public interface ReservationAPI {
     @GetMapping("/getAllMovies")
-    public MoviesResponse getAllMovies();
+    MoviesResponse getAllMovies();
 
-    @GetMapping("/getAvailability/{movieName}")
-    public AvailabilityResponse getAvailability(@PathVariable("movieName") String movieName);
+    @GetMapping("/getShowsByMovie/{movieName}")
+    List<Show> getShowsByMovie(@PathVariable("movieName") String movieName);
+
+    @PostMapping("/getAvailability")
+    AvailabilityResponse getAvailability(@RequestBody GetAvailabilityRequest getAvailabilityRequest);
 
     @PostMapping("/reserve")
-    public BookedSeatsResponse reserveSeats(@RequestBody BookSeatsDTO bookSeatsDTO);
+    SeatsOperationResponse reserveSeats(@RequestBody SeatsOperationDTO bookSeatsDTO);
+
+    @PostMapping("/cancel")
+    SeatsOperationResponse cancelSeats(@RequestBody SeatsOperationDTO cancelSeatsDTO);
 }

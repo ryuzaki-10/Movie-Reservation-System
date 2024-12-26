@@ -6,6 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class BookSeatsDTO {
-    List<Seat> seats;
+public class SeatsOperationResponse {
+    private Boolean isSuccessful;
+    private List<Seat> seats;
 }

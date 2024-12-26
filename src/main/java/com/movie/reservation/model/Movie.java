@@ -18,5 +18,4 @@ public class Movie {
     private String name;
     private String duration;
     private List<String> cast;
-    private LocalDateTime time;
 }

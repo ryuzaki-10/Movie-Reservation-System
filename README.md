@@ -1,4 +1,6 @@
 # Movie-Reservation-System
-![image](https://github.com/user-attachments/assets/5a879c68-95e2-41d0-b2b7-e518faf4b824)
+![image](https://github.com/user-attachments/assets/e7105301-26ae-4e66-afc8-9954151e01c7)
+
+
 
 

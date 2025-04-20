@@ -1,0 +1,46 @@
+openapi: 3.0.1
+info:
+  title: Movie Reservation API
+  description: API documentation for the Movie Reservation system
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local server
+paths:
+  /shows:
+    get:
+      summary: Get Shows by Movie Name
+      description: Retrieve a list of shows for a given movie name. The movie name can be a partial match.
+      tags:
+        - Shows
+      parameters:
+        - name: movieName
+          in: query
+          description: The name of the movie to search for
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of shows
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Show'
+components:
+  schemas:
+    Show:
+      type: object
+      properties:
+        id:
+          type: integer
+        movieName:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time

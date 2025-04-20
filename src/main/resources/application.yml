@@ -1,0 +1,22 @@
+spring:
+  kafka:
+    bootstrap-servers: kafka-broker-1:9092,kafka-broker-2:9093,kafka-broker-3:9094
+    consumer:
+      group-id: ticket-reservation-group
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+    producer:
+      retries: 3
+      acks: all
+  application:
+    name: Ticket Reservation System
+  data:
+    mongodb:
+      uri: mongodb+srv://${MONGO_USER}:${MONGO_PASS}@${MONGO_HOST}/?retryWrites=true&w=majority&appName=Cluster0
+      database: ticket-reservation
+
+springdoc:
+    api-docs:
+      path: /v3/api-docs
+      swagger-ui:
+        url: /v3/api-docs.yaml

@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 public class ReservationController implements ReservationAPI{
-   @Autowired
+    @Autowired
     private ReservationService reservationService;
 
     public MoviesResponse getAllMovies() {

@@ -6,9 +6,11 @@ import com.movie.reservation.model.Show;
 import com.movie.reservation.repository.MoviesRepository;
 import com.movie.reservation.repository.ShowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ReservationServiceImpl implements ReservationService{
     @Autowired
     private ShowRepository showRepository;
@@ -18,12 +20,12 @@ public class ReservationServiceImpl implements ReservationService{
 
     @Override
     public SeatsOperationResponse reserveSeats(SeatsOperationDTO seatsOperationDTO) {
-
+    return null;
     }
 
     @Override
     public AvailabilityResponse getAvailability(GetAvailabilityRequest getAvailabilityRequest) {
-
+    return null;
 
     }
 

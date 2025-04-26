@@ -12,11 +12,11 @@ spring:
     name: Ticket Reservation System
   data:
     mongodb:
-      uri: mongodb+srv://${MONGO_USER}:${MONGO_PASS}@${MONGO_HOST}/?retryWrites=true&w=majority&appName=Cluster0
+      uri: mongodb+srv://admin:password%40123@cluster0.7kzjasa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
       database: ticket-reservation
 
 springdoc:
     api-docs:
       path: /v3/api-docs
-      swagger-ui:
-        url: /v3/api-docs.yaml
+    swagger-ui:
+      url: /swagger-ui

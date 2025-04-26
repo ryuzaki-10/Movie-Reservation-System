@@ -3,21 +3,22 @@ info:
   title: Movie Reservation API
   description: API documentation for the Movie Reservation system
   version: 1.0.0
-servers:
-  - url: http://localhost:8080
-    description: Local server
 paths:
-  /shows:
+  /getAllShows:
     get:
-      summary: Get Shows by Movie Name
-      description: Retrieve a list of shows for a given movie name. The movie name can be a partial match.
+      summary: Get all available shows
+      description: Retrieve a list of shows for given set of parameters. The movie name can be a partial match.
       tags:
         - Shows
       parameters:
         - name: movieName
           in: query
           description: The name of the movie to search for
-          required: true
+          schema:
+            type: string
+        - name: date
+          in: query
+          description: The date for which movies are required
           schema:
             type: string
       responses:
@@ -28,19 +29,66 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Show'
+                  $ref: '#/components/schemas/getAllShowsResponse'
+        '404':
+          description: Movie not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAllShowsError'
+
+  /bookMovieTickets:
+    post:
+      summary: Book a particular show
+      description: Book a show with a specific movie and date
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bookMovieTicketRequest'
+      responses:
+        '200':
+          description: Booked successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bookMovieTicketResponse'
 components:
   schemas:
-    Show:
+    getAllShowsResponse:
       type: object
       properties:
         id:
           type: integer
         movieName:
           type: string
+        date:
+          type: string
         startTime:
           type: string
-          format: date-time
         endTime:
           type: string
-          format: date-time
+    bookMovieTicketRequest:
+      type: object
+      properties:
+        movieName:
+          type: string
+        time:
+          type: string
+    bookMovieTicketResponse:
+      type: object
+      properties:
+        bookingId:
+          type: string
+        movieName:
+          type: string
+        time:
+          type: string
+        status:
+          type: string
+    getAllShowsError:
+      type: object
+      properties:
+        errorMessage:
+          type: string

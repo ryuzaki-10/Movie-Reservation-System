@@ -17,5 +17,4 @@ public class Movie {
     @TextIndexed
     private String name;
     private String duration;
-    private List<String> cast;
 }

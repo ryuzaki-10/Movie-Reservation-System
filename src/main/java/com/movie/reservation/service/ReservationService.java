@@ -10,13 +10,6 @@ import java.util.List;
 
 @Service
 public interface ReservationService {
-    SeatsOperationResponse reserveSeats(SeatsOperationDTO seatsOperationDTO);
-
-    AvailabilityResponse getAvailability(GetAvailabilityRequest getAvailabilityRequest);
-
-    MoviesResponse getAllMovies();
-
-    SeatsOperationResponse cancelSeats(SeatsOperationDTO bookSeatsDTO);
-
-    List<Show> getShowsByMovie(String movieName);
+    List<GetAllShowsResponse> getAllShows(String movieName, String date);
+    BookMovieTicketsResponse bookMovieTickets(BookMovieTicketsRequest bookMovieTicketsRequest);
 }

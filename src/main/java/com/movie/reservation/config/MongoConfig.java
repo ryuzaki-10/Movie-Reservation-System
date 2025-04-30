@@ -1,4 +1,4 @@
-package com.yourcompany.yourapp.config;
+package com.movie.reservation.config;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;

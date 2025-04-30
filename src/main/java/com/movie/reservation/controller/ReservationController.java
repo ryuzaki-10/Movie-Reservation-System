@@ -13,27 +13,13 @@ public class ReservationController implements ReservationAPI{
     @Autowired
     private ReservationService reservationService;
 
-    public MoviesResponse getAllMovies() {
-        return reservationService.getAllMovies();
+    @Override
+    public GetAllShowsResponse getAllMovies(String movieName, String date) {
+        return reservationService.getAllMovies(movieName,date);
     }
 
     @Override
-    public List<Show> getShowsByMovie(String movieName) {
-        return List.of();
-    }
-
-
-    public AvailabilityResponse getAvailability(GetAvailabilityRequest getAvailabilityRequest) {
-        return reservationService.getAvailability(getAvailabilityRequest);
-    }
-
-
-    public SeatsOperationResponse reserveSeats(SeatsOperationDTO seatsOperationDTO) {
-        return reservationService.reserveSeats(seatsOperationDTO);
-    }
-
-    @Override
-    public SeatsOperationResponse cancelSeats(SeatsOperationDTO cancelSeatsDTO) {
-        return null;
+    public BookMovieTicketsResponse bookMovieTickets(BookMovieTicketsRequest bookMovieTicketsRequest) {
+        return reservationService.bookMovieTickets(bookMovieTicketsRequest);
     }
 }

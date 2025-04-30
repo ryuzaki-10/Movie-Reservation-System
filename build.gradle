@@ -52,26 +52,7 @@ configurations.all {
     resolutionStrategy.force 'org.yaml:snakeyaml:2.0'
 }
 
-openApiGenerate {
-	generatorName = "spring"
-	inputSpec = "$rootDir/src/main/resources/openapi.yml"
-	outputDir = "$buildDir/generated"
-	apiPackage = "com.movie.reservation.api"
-	modelPackage = "com.movie.reservation.model"
-	invokerPackage = "com.movie.reservation.invoker"
-	validateSpec = false
-	configOptions = [
-			dateLibrary: "java8",
-			useSpringBoot3: "true",
-			interfaceOnly: "true",
-			skipDefaultInterface: "true",
-			annotationLibrary: "jakarta",
-			oas3: "true",
-			useJakartaEe : "true"
-	]
-}
 
-compileJava.dependsOn('openApiGenerate')
 
 tasks.named('test') {
 	useJUnitPlatform()

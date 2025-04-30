@@ -18,5 +18,4 @@ public class Show {
     private String time;
     @DocumentReference(lazy = true)
     private Movie movie;
-    private List<Seat> seats;
 }

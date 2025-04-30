@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ReservationAPI {
     @GetMapping("/getAllShows/{movieName}/{date}")
-    List<GetAllShowsResponse> getAllMovies(@RequestParam String movieName, @RequestParam String date);
+    List<GetAllShowsResponse> getAllMovies(@PathVariable String movieName, @PathVariable String date);
 
     @PostMapping("/bookMovieTickets")
     BookMovieTicketsResponse bookMovieTickets(@RequestBody BookMovieTicketsRequest bookMovieTicketsRequest);

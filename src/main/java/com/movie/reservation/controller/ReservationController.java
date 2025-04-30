@@ -14,8 +14,8 @@ public class ReservationController implements ReservationAPI{
     private ReservationService reservationService;
 
     @Override
-    public GetAllShowsResponse getAllMovies(String movieName, String date) {
-        return reservationService.getAllMovies(movieName,date);
+    public List<GetAllShowsResponse> getAllMovies(String movieName, String date) {
+        return reservationService.getAllShows(movieName,date);
     }
 
     @Override

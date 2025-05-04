@@ -9,7 +9,10 @@ services:
       - MONGO_PASS
       - MONGO_HOST
     depends_on:
-      - kafka-topics-init
+      gradle-build:
+        condition: service_completed_successfully
+      kafka-topics-init:
+        condition: service_started
     ports:
       - "8080:8080"
     healthcheck:
@@ -97,6 +100,7 @@ services:
     restart: on-failure:3
 
 volumes:
+  gradle-cache:
   zookeeper-data:
   kafka-broker-1-data:
   kafka-broker-2-data:

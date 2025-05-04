@@ -2,7 +2,7 @@
 FROM gradle:8.5-jdk17 AS build
 WORKDIR /app
 COPY . .
-RUN gradle clean build
+RUN gradle clean build -x test
 
 # Run stage
 FROM mirror.gcr.io/library/eclipse-temurin:17.0.8_7-jdk

@@ -1,10 +1,13 @@
 FROM mirror.gcr.io/library/eclipse-temurin:17.0.8_7-jdk
 
+# Install curl for healthcheck
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
 # Set the working directory
 WORKDIR /app
 
 # Copy the JAR file to the container
-COPY build/libs/ticket-reservation-system-plain.jar app.jar
+COPY build/libs/reservation-1.0.0.jar app.jar
 
 # Expose the application port
 EXPOSE 8080

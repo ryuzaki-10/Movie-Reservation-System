@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk
+FROM mirror.gcr.io/library/eclipse-temurin:17.0.8_7-jdk
 
 # Set the working directory
 WORKDIR /app

@@ -1,7 +1,6 @@
 package com.movie.reservation.controller;
 
 import com.movie.reservation.DTO.*;
-import com.movie.reservation.model.Show;
 import com.movie.reservation.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;

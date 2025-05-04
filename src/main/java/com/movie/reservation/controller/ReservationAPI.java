@@ -1,7 +1,6 @@
 package com.movie.reservation.controller;
 
 import com.movie.reservation.DTO.*;
-import com.movie.reservation.model.Show;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

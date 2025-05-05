@@ -62,4 +62,4 @@ out/
 .vscode/
 
 .env
-**/*application.yml
+**/*/application.yml

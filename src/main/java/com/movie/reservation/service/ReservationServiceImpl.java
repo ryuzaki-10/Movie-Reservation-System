@@ -38,11 +38,13 @@ public class ReservationServiceImpl implements ReservationService{
     @Override
     public List<GetAllShowsResponse> getAllShows(String movieName, String date) {
         Movie movie = moviesRepository.getMovieByName(movieName);
+        System.out.println("Movie: " + movie);
         if(movie == null) {
             return null;
         }
 
-        List<Show> shows = showRepository.findShowsByMovie(movie);
+        List<Show> shows = showRepository.findShowsByMovieName(movie.getName());
+        System.out.println("Shows: " + shows);
         List<GetAllShowsResponse> getAllShowsResponses = new ArrayList<>();
         for(Show show : shows) {
             GetAllShowsResponse currGetAllShowsResponse = new GetAllShowsResponse();

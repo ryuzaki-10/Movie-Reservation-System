@@ -9,8 +9,6 @@ services:
       - MONGO_PASS
       - MONGO_HOST
     depends_on:
-      gradle-build:
-        condition: service_completed_successfully
       kafka-topics-init:
         condition: service_started
     ports:

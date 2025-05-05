@@ -18,8 +18,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.springframework.data.mongodb.core.aggregation.DateOperators.DateToString.dateToString;
-
 @Service
 public class ReservationServiceImpl implements ReservationService{
 
@@ -39,12 +37,12 @@ public class ReservationServiceImpl implements ReservationService{
 
     @Override
     public List<GetAllShowsResponse> getAllShows(String movieName, String date) {
-        Movie movie =  moviesRepository.getMovieByName(movieName);
+        Movie movie = moviesRepository.getMovieByName(movieName);
         if(movie == null) {
             return null;
         }
 
-        List<Show> shows = showRepository.findShowsByMovieName(movie.getName());
+        List<Show> shows = showRepository.findShowsByMovie(movie);
         List<GetAllShowsResponse> getAllShowsResponses = new ArrayList<>();
         for(Show show : shows) {
             GetAllShowsResponse currGetAllShowsResponse = new GetAllShowsResponse();

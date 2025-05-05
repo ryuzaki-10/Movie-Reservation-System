@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface MoviesRepository extends MongoRepository<Movie,Integer> {
 
-    @Query("{$name: ?0}")
+    @Query("{'name': ?0}")
    Movie getMovieByName(String name);
 }
